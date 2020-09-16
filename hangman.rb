@@ -2,22 +2,23 @@
 # The function's parameters are a word and an array of letters.  
 # It returns a string showing the letters that have been guessed.  
 # Call the function from within your program so that you know that it works.
+#Example: hangman("bob",["b"]) should evaluate to "b_b"
+#Example: hangman("alphabet",["a","h"]) should return "a__ha___"
 
-def hangman(word = "", array_of_letter=[])
+def hangman(word , array_of_letter)
     result_string = ""
-    guessed_letter = array_of_letter
-    letter = word
-    while letter.downcase != "e"
-        puts "Enter a Letter to guess"
-        puts "Or"
-        puts "Press e to exit!"
-        letter = gets.chomp
-        result_string += letter + " "
+    word.split('').each do |i|
+        if array_of_letter.include? i
+            result_string += i
+        else
+            result_string += "_"
+        end
     end
     return result_string.downcase
 end
 
 
-result = hangman()
+result = hangman("sinancengiz ve ben", ["n","c","d","i", "f","e"])
 
-print "Guessed letters" + result
+print "Guessed letters " + result
+
